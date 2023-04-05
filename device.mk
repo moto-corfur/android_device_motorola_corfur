@@ -44,6 +44,11 @@ PRODUCT_PACKAGES += \
 # GSI keys
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.manager@1.0
+
 # Init
 PRODUCT_PACKAGES += \
     init.corfur.rc \
