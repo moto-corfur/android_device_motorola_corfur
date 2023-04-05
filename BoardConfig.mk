@@ -17,6 +17,7 @@ AB_OTA_PARTITIONS += \
     system_ext \
     vbmeta \
     vbmeta_system \
+    vendor \
     vendor_boot
 
 # Architecture
@@ -70,14 +71,25 @@ BOARD_KERNEL_CMDLINE := \
     lpm_levels.sleep_disabled=1 loop.max_part=7 \
     msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=0 \
     video=vfb:640x400,bpp=32,memsize=3072000
-
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 TARGET_KERNEL_ADDITIONAL_FLAGS := DTC_EXT=$(shell pwd)/prebuilts/misc/linux-x86/dtc/dtc LLVM=1
 TARGET_KERNEL_SOURCE := kernel/motorola/sm6375
-TARGET_KERNEL_CONFIG := vendor/holi-qgki_defconfig
+#TARGET_KERNEL_CONFIG := vendor/holi-qgki_defconfig
+
+BOARD_KERNEL_BINARIES := kernel
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)-prebuilt/dtbo.img
+TARGET_FORCE_PREBUILT_KERNEL := true
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)-prebuilt/kernel
+TARGET_KERNEL_CONFIG := holi_QGKI
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)-prebuilt/dtb.img
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)-prebuilt/dtb.img:$(TARGET_COPY_OUT)/dtb.img \
+    $(DEVICE_PATH)-prebuilt/kernel:kernel \
+    $(call find-copy-subdir-files,*,$(DEVICE_PATH)-prebuilt/modules/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules)
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
@@ -90,7 +102,7 @@ BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 100663296
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 110782033920
 BOARD_BUILD_VENDOR_RAMDISK_IMAGE := true
 
-BOARD_MOTOROLA_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext
+BOARD_MOTOROLA_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext vendor
 BOARD_SUPER_PARTITION_GROUPS := motorola_dynamic_partitions
 BOARD_MOTOROLA_DYNAMIC_PARTITIONS_SIZE := 7256141824
 BOARD_SUPER_PARTITION_SIZE := 14512291840
@@ -104,6 +116,8 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
+
+BOARD_PREBUILT_VENDORIMAGE := $(DEVICE_PATH)-prebuilt/vendor.img
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
@@ -128,6 +142,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 # Sepolicy
 include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
