@@ -47,6 +47,17 @@ PRODUCT_PACKAGES += \
   	android.hardware.fastboot@1.0-impl-mock \
 	  fastbootd
 
+# GPS
+PRODUCT_PACKAGES += \
+    apdr.conf \
+    flp.conf \
+    gnss_antenna_info.conf \
+    gps.conf \
+    izat.conf \
+    lowi.conf \
+    sap.conf \
+    xtwifi.conf
+
 # Init
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init/fstab.default:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.default
