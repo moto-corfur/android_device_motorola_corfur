@@ -41,7 +41,36 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init/fstab.default:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.default
 
 PRODUCT_PACKAGES += \
-    fstab.default
+    init.class_main.sh \
+    init.crda.sh \
+    init.kernel.post_boot-blair.sh \
+    init.kernel.post_boot-holi.sh \
+    init.kernel.post_boot.sh \
+    init.mmi.boot.sh \
+    init.mmi.touch.sh \
+    init.oem.fingerprint.overlay.sh \
+    init.oem.fingerprint2.sh \
+    init.oem.hw.sh \
+    init.qcom.class_core.sh \
+    init.qcom.coex.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.sh \
+    init.qti.kernel.sh \
+    vendor_modprobe.sh
+
+PRODUCT_PACKAGES += \
+    fstab.default \
+    init.mmi.charge_only.rc \
+    init.mmi.chipset.rc \
+    init.mmi.overlay.rc \
+    init.mmi.rc \
+    init.qcom.rc \
+    init.qti.kernel.rc \
+    init.recovery.qcom.rc \
+    init.target.rc \
+    init.vendor.st21nfc.rc \
+    ueventd.qcom.rc
 
 # Moto hardware
 PRODUCT_PACKAGES += \
