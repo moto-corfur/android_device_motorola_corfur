@@ -8,21 +8,21 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 TARGET_SUPPORTS_OMX_SERVICE := false
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from berlin device
-$(call inherit-product, device/motorola/berlin/device.mk)
+# Inherit from corfur device
+$(call inherit-product, device/motorola/corfur/device.mk)
 
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-PRODUCT_NAME := lineage_berlin
-PRODUCT_DEVICE := berlin
+PRODUCT_NAME := lineage_corfur
+PRODUCT_DEVICE := corfur
 PRODUCT_MANUFACTURER := motorola
 PRODUCT_BRAND := motorola
-PRODUCT_MODEL := motorola edge 20
+PRODUCT_MODEL := moto g71 5G
 
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="berlin_global-user 13 T1RGS33.135-109-9-29 695e0-d4b251 release-keys" \
-    BuildFingerprint=motorola/berlin_global/berlin:13/T1RGS33.135-109-9-29/695e0-d4b251:user/release-keys \
-    DeviceProduct=berlin_retail
+    BuildDesc="corfur_g-user 12 S2RUBS32.51-15-9-17 5404f0-d7d7e9 release-keys" \
+    BuildFingerprint=motorola/corfur_g/corfur:12/S2RUBS32.51-15-9-17/5404f0-d7d7e9:user/release-keys \
+    DeviceProduct=corfur_g

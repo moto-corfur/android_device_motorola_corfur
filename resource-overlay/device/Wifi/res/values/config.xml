@@ -5,5 +5,5 @@
 -->
 <resources>
     <!-- Do not translate. Default access point SSID used for tethering -->
-    <string name="wifi_tether_configure_ssid_default" translatable="false">moto edge 20</string>
+    <string name="wifi_tether_configure_ssid_default" translatable="false">moto g71 5g</string>
 </resources>

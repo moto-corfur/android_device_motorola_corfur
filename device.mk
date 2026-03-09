@@ -17,8 +17,8 @@ PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
 PRODUCT_SHIPPING_API_LEVEL := 30
 
-# Inherit from motorola sm7325-common
-$(call inherit-product, device/motorola/sm7325-common/common.mk)
+# Inherit from motorola sm6375-common
+$(call inherit-product, device/motorola/sm6375-common/common.mk)
 
 # Overlay
 PRODUCT_PACKAGES += \
@@ -76,4 +76,4 @@ PRODUCT_PACKAGES += \
 $(call soong_config_set, MOTOROLA_TOUCH, HIGH_TOUCH_POLLING_PATH, /sys/class/touchscreen/primary/interpolation)
 
 # Inherit from vendor blobs
-$(call inherit-product, vendor/motorola/berlin/berlin-vendor.mk)
+$(call inherit-product, vendor/motorola/corfur/corfur-vendor.mk)
