@@ -6,12 +6,10 @@
 
 from extract_utils.extract import extract_fns_user_type
 from extract_utils.extract_star import extract_star_firmware
-
 from extract_utils.fixups_blob import (
     blob_fixup,
     blob_fixups_user_type,
 )
-
 from extract_utils.fixups_lib import (
     lib_fixups,
     lib_fixups_user_type,
@@ -22,14 +20,9 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'vendor/motorola/sm6375-common',
     'hardware/motorola',
     'hardware/qcom-caf/common/libqti-perfd-client',
-    'hardware/qcom-caf/sm8350',
-    'hardware/qcom-caf/wlan',
-    'vendor/qcom/opensource/commonsys-intf/display',
-    'vendor/qcom/opensource/commonsys/display',
-    'vendor/qcom/opensource/dataservices',
+    'vendor/motorola/sm6375-common',
     'vendor/qcom/opensource/display',
 ]
 
@@ -38,17 +31,21 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
-    ('vendor/lib/libmot_chi_desktop_helper.so', 'vendor/lib64/libmot_chi_desktop_helper.so'): blob_fixup()
-        .add_needed('libgui_shim_vendor.so'),
     (
-        'vendor/lib64/camera/components/com.mot.node.c2d.so',
         'vendor/lib64/camera/components/com.qti.node.dewarp.so',
         'vendor/lib64/camera/components/com.vidhance.node.ica.so',
-        'vendor/lib64/camera/components/com.vidhance.node.processing.so'
+        'vendor/lib64/camera/components/com.vidhance.node.processing.so',
     ): blob_fixup()
         .replace_needed('libui.so', 'libui-v34.so'),
     'vendor/lib64/sensors.moto.so': blob_fixup()
         .add_needed('libbase_shim.so'),
+    'vendor/lib64/libBSTSWAD.so': blob_fixup()
+        .clear_symbol_version('AHardwareBuffer_allocate')
+        .clear_symbol_version('AHardwareBuffer_describe')
+        .clear_symbol_version('AHardwareBuffer_lock')
+        .clear_symbol_version('AHardwareBuffer_lockPlanes')
+        .clear_symbol_version('AHardwareBuffer_release')
+        .clear_symbol_version('AHardwareBuffer_unlock'),
 }  # fmt: skip
 
 extract_fns: extract_fns_user_type = {

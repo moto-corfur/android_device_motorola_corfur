@@ -1,3 +1,19 @@
-# Firmware - from berlin_global-user 13 T1RGS33.135-109-9-29 695e0-d4b251 release-keys - RETAIL variant - (factory image).
+# All firmware images below are extracted from the release mentioned in proprietary-files.txt
 
-BTFM.bin:bluetooth.img;AB|8dc68df57a56c4e603297e8dc06bb6f6793b47eb
+abl.elf:abl.img;AB
+BTFM.bin:bluetooth.img;AB
+devcfg.mbn:devcfg.img;AB
+dspso.bin:dsp.img;AB
+fsg.mbn:fsg.img;AB
+hyp.mbn:hyp.img;AB
+keymaster.mbn:keymaster.img;AB
+logo.bin:logo.img;AB
+NON-HLOS.bin:modem.img;AB
+prov64.mbn:prov.img;AB
+qupfw.elf:qupfw.img;AB
+rpm.mbn:rpm.img;AB
+storsec.mbn:storsec.img;AB
+tz.mbn:tz.img;AB
+uefi_sec.mbn:uefisecapp.img;AB
+xbl.elf:xbl.img;AB
+xbl_config.elf:xbl_config.img;AB
