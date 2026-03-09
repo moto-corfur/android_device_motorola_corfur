@@ -61,11 +61,5 @@ $(call soong_config_set_bool,moto_sensors,udfps,false)
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 
-# Touch HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch-service.motorola
-
-$(call soong_config_set, MOTOROLA_TOUCH, HIGH_TOUCH_POLLING_PATH, /sys/class/touchscreen/primary/interpolation)
-
 # Inherit from vendor blobs
 $(call inherit-product, vendor/motorola/corfur/corfur-vendor.mk)
