@@ -30,7 +30,8 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     init.mmi.overlay.rc \
-    init.vendor.st21nfc.rc
+    init.vendor.st21nfc.rc \
+    init.oem.fingerprint2.sh
 
 # LiveDisplay
 $(call soong_config_set_bool,livedisplay_sysfs,enable_af,true)
