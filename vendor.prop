@@ -1,0 +1,11 @@
+# Audio
+persist.vendor.audio.fluence.voicecomm=true
+persist.vendor.audio.voicecall.speaker.stereo=true
+
+# Camera
+persist.vendor.camera.physical.num=4
+
+# Display
+ro.surface_flinger.has_wide_color_display=false
+ro.surface_flinger.set_idle_timer_ms=500
+ro.surface_flinger.uclamp.min=512
