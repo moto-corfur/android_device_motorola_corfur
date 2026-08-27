@@ -14,6 +14,12 @@ PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 # API
 PRODUCT_SHIPPING_API_LEVEL := 30
 
+# Init
+PRODUCT_PACKAGES += \
+    init.mmi.overlay.rc \
+    init.oem.fingerprint2.sh \
+    init.vendor.st21nfc.rc
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
