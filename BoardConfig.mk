@@ -14,6 +14,16 @@ TARGET_BOOTLOADER_BOARD_NAME := corfur
 # Display
 TARGET_SCREEN_DENSITY := 400
 
+# Kernel
+BOARD_KERNEL_CMDLINE += androidboot.hab.product=corfur
+TARGET_KERNEL_CONFIG += vendor/ext_config/moto-holi-corfur.config
+
+# Kernel Modules
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/configs/modules/modules.load))
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(DEVICE_PATH)/configs/modules/modules.blocklist
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/configs/modules/modules.load.recovery))
+BOOT_KERNEL_MODULES := $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD)
+
 # Partitions
 BOARD_MOT_DP_GROUP_SIZE := 7256141824
 BOARD_SUPER_PARTITION_SIZE := 14512291840
